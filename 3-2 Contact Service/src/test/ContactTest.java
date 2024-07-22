@@ -21,6 +21,7 @@ public class ContactTest {
 	public String testLast = "LastName";
 	public String testPhone = "1234567890";
 	public String testAddress = "123456 Username Lane, Alabama";
+	public String nullString = null;
 	
 	@Test
 	void testContactClass() {
@@ -77,6 +78,47 @@ public class ContactTest {
 		Contact contact = new Contact();
 		assertEquals("", contact.getID());
 		assertEquals("", contact.getfirstName());
-		
+		assertEquals("", contact.getLastName());
+		assertEquals("", contact.getPhoneNumber());
+		assertEquals("", contact.getAddress());
 	}
+	
+	@Test
+	void testNullContactID() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+		new Contact(nullString,
+				testFirst, testLast, testPhone,	testAddress);
+		});}
+	
+	@Test
+	void testNullContactFirst() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+		new Contact(testID,
+				nullString
+				,testLast, testPhone, testAddress);
+		});}
+	
+	@Test
+	void testNullContactLast() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+		new Contact(testID, testFirst
+					,nullString
+					,testPhone, testAddress);
+		});}
+
+	
+	@Test
+	void testNullContactPhone() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+		new Contact(testID, testFirst, testLast,
+				nullString
+				,testAddress);
+		});}
+
+	@Test
+	void testNullContactAddress() {
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+		new Contact(testID, testFirst, testLast, testPhone,
+				nullString);
+		});}
 }

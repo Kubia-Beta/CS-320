@@ -5,7 +5,6 @@
 ////////////////////////
 
 package main;
-import java.util.HashSet;
 
 /**
  * @author connorscultho_snhu
@@ -13,7 +12,7 @@ import java.util.HashSet;
  */
 
 public class Contact {
-	private HashSet<String> IDTable = new HashSet<String>(); // This holds our ID's to verify uniqueness
+	
 	private String ID;
 	private String firstName;
 	private String lastName;
@@ -68,12 +67,7 @@ public class Contact {
 		if (NewID == null || NewID.length() > 10) { // Validate ID exists and length is <=10
 			throw new IllegalArgumentException("Invalid ID");
 		}
-		boolean isPresent = IDTable.contains(NewID); // Check if the ID exists already
-		if (isPresent == true) { // No duplicates allowed!
-			throw new IllegalArgumentException("Invalid ID; This ID already exists");
-		}
 		
-		IDTable.add(NewID);
 		ID = NewID; // Must be valid to reach
 	}
 	
@@ -152,18 +146,4 @@ public class Contact {
 		}
 		address = newAddress;
 	}
-	
-	//====================================
-	// Main
-	//====================================
-	/**
-	 * @param args
-	 */
-	//public static void main(String[] args) {
-	//	// TODO Auto-generated method stub
-	//
-	//}
-
-
-
 }
