@@ -10,7 +10,7 @@ public class SchoolClass {
 	private String ID;
 	public String firstName;
 	public String lastName;
-	public String phoneNumber;
+	public String phoneNumber; // String for now, this may change to int later? Check wk.6
 	public String address;
 
 	// Get and set ID
@@ -19,22 +19,10 @@ public class SchoolClass {
 	}
 
 	public void setID(String iD) {
-		if(iD == null || iD.length()>10) { // Validate name length
+		if(iD == null || iD.length() > 10) { // Validate ID exists and length is <10
 			throw new IllegalArgumentException("Invalid ID");
 		}
 		ID = iD; // Must be valid to reach
-	}
-	
-	// Get and set lastName
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String name) {
-		if(name == null || name.length()>=10) {
-			throw new IllegalArgumentException("Invalid Last Name");
-		}
-		lastName = name;
 	}
 	
 	// Get and set firstName
@@ -43,10 +31,22 @@ public class SchoolClass {
 	}
 
 	public void setfirstName(String name) {
-		if(name == null || name.length()>=10) {
+		if(name == null || name.length() > 10) {
 			throw new IllegalArgumentException("Invalid First Name");
 		}
 		firstName = name;
+	}
+	
+	// Get and set lastName
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String name) {
+		if(name == null || name.length() > 10) {
+			throw new IllegalArgumentException("Invalid Last Name");
+		}
+		lastName = name;
 	}
 	
 	// Get and set phone
@@ -55,13 +55,23 @@ public class SchoolClass {
 	}
 
 	public void setPhone(String phone) {
-		if(phone == null || phone.length()>=10) {
+		if(phone == null || phone.length() == 9) {
 			throw new IllegalArgumentException("Invalid Phone Number");
 		}
 		phoneNumber = phone;
 	}
 	
-	
+	// Get and set phone
+	public String getAddress() {
+		return phoneNumber;
+	}
+
+	public void setAddress(String curAddress) {
+		if(curAddress == null || curAddress.length() == 9) {
+			throw new IllegalArgumentException("Invalid Address");
+		}
+		address = curAddress;
+	}
 	
 	/**
 	 * @param args
