@@ -7,10 +7,9 @@
 package main;
 
 import java.util.HashMap;
-//import java.util.HashSet;
+import java.util.Scanner;
 
 public class ContactService {
-	//private HashSet<String> IDTable = new HashSet<String>(); // This holds our ID's to verify uniqueness
 	private HashMap<String, Contact> Contacts = new HashMap<String, Contact>();
 	// Stores Contacts by ID as a key.
 	
@@ -20,53 +19,60 @@ public class ContactService {
 
 	/**
 	 * Checks for a unique ID and reserves that ID if it is unused
-	 * @param String ID
+	 * @param str ID, str First, str Last, str Phone, str Address
 	 * @return N/A
 	 */
-	public void uniquenessCheck(String newID) {
-	boolean isPresent = IDTable.contains(newID); // Checks if the ID exists already
-		if (isPresent == true) { // No duplicates allowed!
-			throw new IllegalArgumentException("Invalid ID; This ID already exists");
-		}
-		IDTable.add(newID); // Add the ID to the table to reserve it
-	}
-
-	public HashSet<Contact> getContacts() {
-		return Contacts;
-	}
-	
 	public void addContact(String newID, String newFirst, String newLast, String newPhone,
 			String newAddress) {
 		// Call uniqueness check
-		boolean isPresent = IDTable.contains(newID);
+		boolean isPresent = Contacts.containsValue(newID);
 		if (isPresent == true) { // No duplicates allowed!
 			throw new IllegalArgumentException("Invalid ID; This ID already exists.");
 		}
-		IDTable.add(newID); // Add the ID to the table to reserve it
 		// Call constructor for contact obj
 		Contact tempContact = new Contact(newID, newFirst, newLast, newPhone, newAddress);
 		// Add new contact obj to Contacts
-		Contacts.add(tempContact);
+		Contacts.put(newID, tempContact);
 		return;
 	}
 	
 	public void deleteContact(String ID) {
-		// call Contacts.contains(id);
-		boolean	isPresent = 
-		// if false, throw exception. Implicit else continues
-		// Remove the object by ID from both tables
-		Contacts.remove(ID);
-		IDTable.remove(ID);
+		// Make sure the ID exist, throw exception if it doesn't. Implicit else continues
+		boolean	isPresent = Contacts.containsValue(ID);
+			if (isPresent == false) {
+				throw new IllegalArgumentException("Invalid ID; This ID does not exist.");
+			}
+		Contacts.remove(ID); // Remove the object by ID
+		return;
 	}
 	
 	public void updateContact() {
+		Scanner in = new Scanner(System.in);
+		System.out.println("Select field to update:" + "\r\n" + "[1] First Name"  + "\r\n" +
+				 "\r\n" + "[2] Last Name" + "\r\n" + "[3] Phone Number" + "\r\n" + "[4] Address");
+		String userMsg = in.nextLine();
+		int choice = Integer.valueOf(userMsg);
 		// switch for choosing field to update
-		// case 1: update ID
-		// case 2: update First
-		// case 3: update Last
-		// case 4: update Phone
-		// case 5: update Address
-		// case else: exit function
+		switch(choice) { // TODO: Add case for exit[5]
+		// case 1: update First
+		case 1:
+			
+			break;
+		// case 2: update Last
+		case 2: 
+			
+			break;
+		// case 3: update Phone
+		case 3:
+			
+			break;
+		// case 4: update Address
+		case 4:
+			
+			break;
+		default:
+			System.out.println("Invalid selection.");
+		}
 	}
 	
 }
