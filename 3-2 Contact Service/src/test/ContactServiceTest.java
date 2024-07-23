@@ -45,6 +45,7 @@ class ContactServiceTest {
 	
 	@Test
 	void testDeleteExists() {
+		assertNotNull(aContactService.lookupContact(testID));
 		aContactService.deleteContact(testID);
 		assertNull(aContactService.lookupContact(testID));
 	}
@@ -66,6 +67,7 @@ class ContactServiceTest {
 	@Test
 	void testUpdateInvalidFirst() {
 		Contact aContact = new Contact();
+		assertEquals(aContact.getID(), "");
 		aContact = aContactService.lookupContact(testID);
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			aContactService.updateContact(testID, 1, testFirst + "OVERLOAD");
@@ -123,16 +125,31 @@ class ContactServiceTest {
 	
 	@Test
 	void testUpdateValidLast() {
-		
+		Contact aContact = new Contact();
+		aContact = aContactService.lookupContact(testID);
+		String beforeString = aContact.getLastName();
+		aContactService.updateContact(testID, 2, "newLast");
+		String afterString = aContact.getLastName();
+		assertNotEquals(beforeString, afterString); 
 	}
 	
 	@Test
 	void testUpdateValidPhone() {
-		
+		Contact aContact = new Contact();
+		aContact = aContactService.lookupContact(testID);
+		String beforeString = aContact.getPhoneNumber();
+		aContactService.updateContact(testID, 3, "0987654321");
+		String afterString = aContact.getPhoneNumber();
+		assertNotEquals(beforeString, afterString); 
 	}
 	
 	@Test
 	void testUpdateValidAddress() {
-		
+		Contact aContact = new Contact();
+		aContact = aContactService.lookupContact(testID);
+		String beforeString = aContact.getAddress();
+		aContactService.updateContact(testID, 4, "36 Doesnt Exist ln");
+		String afterString = aContact.getAddress();
+		assertNotEquals(beforeString, afterString); 
 	}
 }

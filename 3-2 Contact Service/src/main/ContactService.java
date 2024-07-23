@@ -106,8 +106,6 @@ public class ContactService {
 			tempContact.setAddress(updatedField);
 			Contacts.put(ID, tempContact);
 			break;
-		default:
-			System.out.println("Invalid selection.");
 		}
 	}
 	
