@@ -12,6 +12,10 @@ import java.util.HashMap;
 public class ContactService {
 	private HashMap<String, Contact> Contacts = new HashMap<String, Contact>();
 	// Stores Contacts by ID as a key.
+	//ContactService(){
+	//	// TODO: Default constructor
+	//}
+	
 	
 	//====================================
 	// Public Methods
@@ -49,6 +53,17 @@ public class ContactService {
 			}
 		Contacts.remove(ID); // Remove the object by ID
 		return;
+	}
+	
+	/**
+	 * Fetches a contact by ID
+	 * @param str ID
+	 * @return Contact object
+	 */
+	public Contact lookupContact(String ID) {
+		Contact tempContact = new Contact();
+		tempContact = Contacts.get(ID);
+		return tempContact;
 	}
 	
 	/**
