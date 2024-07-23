@@ -1,6 +1,9 @@
-/**
- * 
- */
+////////////////////////////
+// By:                   //
+// Connor Sculthorpe    //
+// 22 June 2024        //
+////////////////////////
+
 package test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,47 +20,47 @@ import main.ContactService;
  *
  */
 class ContactServiceTest {
-	
+	// Vars used to compare and create contacts to reduce magic values
 	private String testID = "ID New";
 	private String testFirst = "FirstName";
 	private String testLast = "LastName";
 	private String testPhone = "1234567890";
 	private String testAddress = "123456 Username Lane, Alabama";
-	ContactService aContactService = new ContactService();
+	ContactService aContactService = new ContactService(); // Empty parent
 	
 	@BeforeEach
-	 void setupBase() {
+	 void setupBase() { // Create a baseline contact to work with
 		aContactService.addContact(testID, testFirst, testLast, testPhone, testAddress);
 	}
 	
 	@Test
-	void testCreateDuplicate() {
+	void testCreateDuplicate() { // Checks that duplicate rejection is funcitoning
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			aContactService.addContact(testID, testFirst, testLast, testPhone, testAddress);
 		});}
 	
 	@Test
-	void testCreateTooLongAllFields() {
+	void testCreateTooLongAllFields() { // Checks that fields that are too long are not accepted by addContact
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			aContactService.addContact(testID + "OVERLOAD", testFirst + "OVERLOAD",
 					testLast + "OVERLOAD", testPhone + "OVERLOAD", testAddress + "OVERLOAD");
 		});}
 	
 	@Test
-	void testDeleteExists() {
+	void testDeleteExists() { // Checks that the contact exists, deletes it, verifies its null
 		assertNotNull(aContactService.lookupContact(testID));
 		aContactService.deleteContact(testID);
 		assertNull(aContactService.lookupContact(testID));
 	}
 	
 	@Test
-	void testDeleteNoExist() {
+	void testDeleteNoExist() { // Checks that non-existent contacts cant be reached by deleteContact
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			aContactService.deleteContact("NoExist");
 		});}
 	
 	@Test
-	void testUpdateInvalidID() {
+	void testUpdateInvalidID() { // Checks that non-existent contacts cant be reached by updateContact
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			aContactService.updateContact("NoExist", 1, testFirst);
 		});
@@ -65,7 +68,7 @@ class ContactServiceTest {
 	}
 	
 	@Test
-	void testUpdateInvalidFirst() {
+	void testUpdateInvalidFirst() { // Checks that invalid first names are rejected by updateContact
 		Contact aContact = new Contact();
 		assertEquals(aContact.getID(), "");
 		aContact = aContactService.lookupContact(testID);
@@ -76,7 +79,7 @@ class ContactServiceTest {
 	}
 	
 	@Test
-	void testUpdateInvalidLast() {
+	void testUpdateInvalidLast() { // Checks that invalid last names are rejected by updateContact
 		Contact aContact = new Contact();
 		aContact = aContactService.lookupContact(testID);
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -86,7 +89,7 @@ class ContactServiceTest {
 	}
 	
 	@Test
-	void testUpdateInvalidPhone() {
+	void testUpdateInvalidPhone() {  // Checks that invalid phone numbers are rejected by updateContact
 		Contact aContact = new Contact();
 		aContact = aContactService.lookupContact(testID);
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -96,7 +99,7 @@ class ContactServiceTest {
 	}
 	
 	@Test
-	void testUpdateInvalidAddress() {
+	void testUpdateInvalidAddress() { // Checks that invalid addresses are rejected by updateContact
 		Contact aContact = new Contact();
 		aContact = aContactService.lookupContact(testID);
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
@@ -106,7 +109,7 @@ class ContactServiceTest {
 	}
 	
 	@Test
-	void testUpdateInvalidOutOfRange() {
+	void testUpdateInvalidOutOfRange() { // Checks that the switch case does not misfire
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
 			aContactService.updateContact("12345", 7, testAddress + "0");
 		});
@@ -114,7 +117,7 @@ class ContactServiceTest {
 	}
 	
 	@Test
-	void testUpdateValidFirst() {
+	void testUpdateValidFirst() { // Checks updateContact's first name function works when valid
 		Contact aContact = new Contact();
 		aContact = aContactService.lookupContact(testID);
 		String beforeString = aContact.getfirstName();
@@ -124,7 +127,7 @@ class ContactServiceTest {
 	}
 	
 	@Test
-	void testUpdateValidLast() {
+	void testUpdateValidLast() { // Checks updateContact's last name function works when valid
 		Contact aContact = new Contact();
 		aContact = aContactService.lookupContact(testID);
 		String beforeString = aContact.getLastName();
@@ -134,7 +137,7 @@ class ContactServiceTest {
 	}
 	
 	@Test
-	void testUpdateValidPhone() {
+	void testUpdateValidPhone() { // Checks updateContact's phone function works when valid
 		Contact aContact = new Contact();
 		aContact = aContactService.lookupContact(testID);
 		String beforeString = aContact.getPhoneNumber();
@@ -144,7 +147,7 @@ class ContactServiceTest {
 	}
 	
 	@Test
-	void testUpdateValidAddress() {
+	void testUpdateValidAddress() { // Checks updateContact's address function works when valid
 		Contact aContact = new Contact();
 		aContact = aContactService.lookupContact(testID);
 		String beforeString = aContact.getAddress();
