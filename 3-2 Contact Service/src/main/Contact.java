@@ -1,7 +1,7 @@
 ////////////////////////////
 // By:                   //
 // Connor Sculthorpe    //
-// 21 June 2024        //
+// 24 June 2024        //
 ////////////////////////
 
 package main;
@@ -64,7 +64,8 @@ public class Contact {
 	 * @return N/A
 	 */
 	public void setID(String NewID) {
-		if (NewID == null || NewID.length() > 10) { // Validate ID exists and length is <=10
+		int maxLength = 10; // Upper bound from design doc
+		if (NewID == null || NewID.length() > maxLength) { // Validate ID exists and length is <=10
 			throw new IllegalArgumentException("Invalid ID");
 		}
 		
@@ -81,7 +82,8 @@ public class Contact {
 	}
 
 	public void setFirstName(String newFirstName) {
-		if(newFirstName == null || newFirstName.length() > 10) {
+		int maxLength = 10;
+		if(newFirstName == null || newFirstName.length() > maxLength) {
 			throw new IllegalArgumentException("Invalid First Name");
 		}
 		firstName = newFirstName;
@@ -101,7 +103,8 @@ public class Contact {
 	 * @return N/A
 	 */
 	public void setLastName(String newLastName) {
-		if(newLastName == null || newLastName.length() > 10) {
+		int maxLength = 10;
+		if(newLastName == null || newLastName.length() > maxLength) {
 			throw new IllegalArgumentException("Invalid Last Name");
 		}
 		lastName = newLastName;
@@ -121,7 +124,8 @@ public class Contact {
 	 * @return N/A
 	 */
 	public void setPhoneNumber(String newPhone) {
-		if(newPhone == null || newPhone.length() != 10) {
+		int requiredLength = 10;
+		if(newPhone == null || newPhone.length() != requiredLength) {
 			throw new IllegalArgumentException("Invalid Phone Number");
 		}
 		phoneNumber = newPhone;
@@ -141,7 +145,10 @@ public class Contact {
 	 * @return N/A
 	 */
 	public void setAddress(String newAddress) {
-		if(newAddress == null || newAddress.length() > 30) { // Strangely does NOT have a min length in requirements
+		int maxLength = 30;
+		int minLength = 6; // "1 8 Av" is a real address
+		if(newAddress == null || newAddress.length() > maxLength
+		|| newAddress.length() < minLength) { // null OR too long OR too short
 			throw new IllegalArgumentException("Invalid Address");
 		}
 		address = newAddress;

@@ -96,7 +96,7 @@ public class ContactTest {
 		new Contact(testID,
 				nullString
 				,testLast, testPhone, testAddress);
-		});}
+		});} 
 	
 	@Test
 	void testNullContactLast() {
