@@ -25,7 +25,7 @@ class ContactServiceTest {
 	private String testFirst = "FirstName";
 	private String testLast = "LastName";
 	private String testPhone = "1234567890";
-	private String testAddress = "123456 Username Lane, Alabama";
+	private String testAddress = "123456 Username Ln, Alabama";
 	ContactService aContactService = new ContactService(); // Empty parent
 	
 	@BeforeEach

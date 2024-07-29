@@ -82,7 +82,7 @@ public class Contact {
 	}
 
 	public void setFirstName(String newFirstName) {
-		int maxLength = 10;
+		int maxLength = 10; // Upper bound from design doc
 		if(newFirstName == null || newFirstName.length() > maxLength) {
 			throw new IllegalArgumentException("Invalid First Name");
 		}
@@ -103,8 +103,8 @@ public class Contact {
 	 * @return N/A
 	 */
 	public void setLastName(String newLastName) {
-		int maxLength = 10;
-		if(newLastName == null || newLastName.length() > maxLength) {
+		int maxLength = 10; // Upper bound from design doc
+		if(newLastName == null || newLastName.length() > 10) {
 			throw new IllegalArgumentException("Invalid Last Name");
 		}
 		lastName = newLastName;
@@ -124,7 +124,7 @@ public class Contact {
 	 * @return N/A
 	 */
 	public void setPhoneNumber(String newPhone) {
-		int requiredLength = 10;
+		int requiredLength = 10; // Exact value from design doc
 		if(newPhone == null || newPhone.length() != requiredLength) {
 			throw new IllegalArgumentException("Invalid Phone Number");
 		}
@@ -137,7 +137,7 @@ public class Contact {
 	 * @return string address
 	 */
 	public String getAddress() {
-		return address;
+		return address; 
 	}
 
 	/**
@@ -145,10 +145,11 @@ public class Contact {
 	 * @return N/A
 	 */
 	public void setAddress(String newAddress) {
-		int maxLength = 30;
+		int maxLength = 30; // Upper bound from design doc
 		int minLength = 6; // "1 8 Av" is a real address
 		if(newAddress == null || newAddress.length() > maxLength
-		|| newAddress.length() < minLength) { // null OR too long OR too short
+				|| newAddress.length() < minLength) { // null OR too long OR too short
+		// Test this and change to add minLength || newAddress.length() < minLength
 			throw new IllegalArgumentException("Invalid Address");
 		}
 		address = newAddress;
