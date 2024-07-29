@@ -20,7 +20,7 @@ public class ContactTest {
 	public String testFirst = "FirstName";
 	public String testLast = "LastName";
 	public String testPhone = "1234567890";
-	public String testAddress = "123456 Username Lane, Alabama";
+	public String testAddress = "123456 Username Ln, Alabama";
 	public String nullString = null;
 	
 	@Test
