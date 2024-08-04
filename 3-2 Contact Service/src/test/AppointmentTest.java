@@ -2,7 +2,7 @@
 // By:                   //
 // Connor Sculthorpe    //
 // 30 June 2024        //
-// TO: 01 August 2024 //
+// TO: 03 August 2024 //
 ///////////////////////
 
 package test;
@@ -18,7 +18,8 @@ import main.Appointment;
 
 class AppointmentTest extends Appointment {
 
-	private String testID, testDescription, nullString, overloadString;
+	private String testID, testDescriptionUpper, testDescriptionLower,
+	testDescriptionBelow, overloadString, nullString;
 	private Appointment aAppointment;
 	private LocalDate aPastDate, aPresentDate, aFutureDate;
 	
@@ -26,10 +27,12 @@ class AppointmentTest extends Appointment {
 	void setUp() throws Exception {
 		System.out.println("<Setup>");
 		testID = "A New ID"; // 8/10 char limit
-		aPastDate = LocalDate.parse("2008-11-23"); // November 23, 2008
 		aPresentDate = LocalDate.now();
-		aFutureDate = LocalDate.parse("2132-11-01"); // November 1, 2132
-		testDescription = "This is what you should do in this given task"; // 46/50 char limit
+		aPastDate = aPresentDate.minusDays(1); // Yesterday
+		aFutureDate = aPresentDate.plusDays(1); // Tomorrow
+		testDescriptionUpper = "This is what you should do with this given task."; // 49/50 char limit
+		testDescriptionLower = "Go"; // 2 char minimum
+		testDescriptionBelow = ""; // under 2 char
 		nullString = null;
 		overloadString = "Far too many characters to be tolerated"; // Used to make sure we run the char limit
 		aAppointment = new Appointment();
@@ -49,27 +52,40 @@ class AppointmentTest extends Appointment {
 
 	@Test
 	void testAppointmentStringDateString() { // Verifies the constructor behavior
-		aAppointment = new Appointment(testID, aFutureDate, testDescription);
+		aAppointment = new Appointment(testID, aFutureDate, testDescriptionUpper); // Upper bound cases
 		assertTrue(aAppointment.getID().equals(testID));
 		assertTrue(aAppointment.getDate().equals(aFutureDate));
-		assertTrue(aAppointment.getDescription().equals(testDescription));
+		assertTrue(aAppointment.getDescription().equals(testDescriptionUpper));
+		aAppointment = new Appointment(testID, aFutureDate, testDescriptionLower); // Lower bound cases
+		assertTrue(aAppointment.getDescription().equals(testDescriptionLower));
 	}
 
 	@Test
-	void testIllegalID() { // Verifies ID behavior when it is too long
+	void testIllegalID() { // Verifies bad Id behavior
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			new Appointment(testID + overloadString, aFutureDate, testDescription);
-		});}
+			new Appointment(testID + overloadString, aFutureDate, testDescriptionUpper);
+		}); // Above size case
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Appointment(nullString + overloadString, aFutureDate, testDescriptionUpper);
+		});} // Null case
 
 	@Test
-	void testIllegalDate() { // Verifies Name behavior when it is too long
+	void testIllegalDate() { // Verifies bad Date behavior is handled
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			new Appointment(testID, aPastDate, testDescription);
-		});}
+			new Appointment(testID, aPastDate, testDescriptionUpper);
+		});} // Past case
 
 	@Test
-	void testIllegalDescription() { // Verifies Description behavior when it is too long
+	void testIllegalDescription() { // Verifies bad Description behavior
 		Assertions.assertThrows(IllegalArgumentException.class, () -> {
-			new Appointment(testID, aFutureDate, testDescription + overloadString);
-		});}
+			new Appointment(testID, aFutureDate, testDescriptionUpper + overloadString);
+		}); // Above size case
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Appointment(testID, aFutureDate, testDescriptionBelow);
+		}); // Below size case
+		Assertions.assertThrows(IllegalArgumentException.class, () -> {
+			new Appointment(testID, aFutureDate, nullString);
+		});} // Null case
+	
+	
 }

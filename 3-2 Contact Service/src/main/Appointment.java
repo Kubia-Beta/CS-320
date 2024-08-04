@@ -2,7 +2,7 @@
 // By:                   //
 // Connor Sculthorpe    //
 // 30 June 2024        //
-// TO: 01 August 2024 //
+// TO: 03 August 2024 //
 ///////////////////////
 
 package main;
@@ -74,9 +74,8 @@ public class Appointment {
 
 	public void setDate(LocalDate newDate) {
 		LocalDate curDate = LocalDate.now();
-		int comparisonResult = curDate.compareTo(newDate);
-		int threshold = 0; // Negative if in the past; Zero if present, positive if future
-		if(newDate == null || comparisonResult >= threshold) { // Not null and in the future
+		boolean comparisonResult = curDate.isBefore(newDate);
+		if(newDate == null || comparisonResult == false) { // Not null and in the future
 			throw new IllegalArgumentException("Invalid date; Exists in the past");
 		}
 		date = newDate;
@@ -97,7 +96,10 @@ public class Appointment {
 	 */
 	public void setDescription(String newDescription) {
 		int maxLength = 50; // Upper bound from design doc
-		if(newDescription == null || newDescription.length() > maxLength) {
+		int minLength = 2; // "Go" is the shortest sentence
+		if(newDescription == null || newDescription.length() > maxLength ||
+				 newDescription.length() < minLength) {
+			
 			throw new IllegalArgumentException("Invalid Description");
 		}
 		description = newDescription;
