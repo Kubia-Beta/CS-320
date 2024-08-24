@@ -2,7 +2,7 @@
 // By:                   //
 // Connor Sculthorpe    //
 // 30 June 2024        //
-// TO: 03 August 2024 //
+// TO: 24 August 2024 //
 ///////////////////////
 
 package main;
@@ -13,13 +13,15 @@ public class Appointment {
 	private String ID;
 	private LocalDate date;
 	private String description;
-	
+
 	//====================================
 	// Public Methods
 	//====================================
 	
 	/**
 	 * Default Constructor
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(1)
 	 * @param N/A
 	 * @return N/A
 	 */
@@ -31,6 +33,8 @@ public class Appointment {
 	
 	/**
 	 * Constructor
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param string ID, string date, string Description
 	 * @return N/A
 	 */
@@ -43,6 +47,8 @@ public class Appointment {
 	// Get and set ID
 	/**
 	 * This function is not called outside of object creation.
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(1)
 	 * @param N/A
 	 * @return string ID
 	 */
@@ -51,6 +57,9 @@ public class Appointment {
 	}
 
 	/**
+	 * Sets an ID to a value at object creation.
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param string New ID
 	 * @return N/A
 	 */
@@ -65,16 +74,26 @@ public class Appointment {
 	
 	// Get and set date
 	/**
+	 * Gets the LocalDate date of the object.
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(1)
 	 * @param N/A
-	 * @return Calendar date
+	 * @return LocalDate date
 	 */
 	public LocalDate getDate() {
 		return date;
 	}
 
+	/**
+	 * Sets the LocalDate date of the object given it is not null and not in the future.
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
+	 * @param LocalDate date
+	 * @return LocalDate date
+	 */
 	public void setDate(LocalDate newDate) {
 		LocalDate curDate = LocalDate.now();
-		boolean comparisonResult = curDate.isBefore(newDate);
+		boolean comparisonResult = curDate.isBefore(newDate); // Is the input in the future T/F
 		if(newDate == null || comparisonResult == false) { // Not null and in the future
 			throw new IllegalArgumentException("Invalid date; Exists in the past");
 		}
@@ -83,6 +102,9 @@ public class Appointment {
 	
 	// Get and set description
 	/**
+	 * Returns the description of an object.
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(1)
 	 * @param N/A
 	 * @return string description
 	 */
@@ -91,6 +113,9 @@ public class Appointment {
 	}
 
 	/**
+	 * Sets the description of an object given its size is less than 50 and greater than 2.
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param string New description
 	 * @return N/A
 	 */
