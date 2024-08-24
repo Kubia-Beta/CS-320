@@ -25,6 +25,8 @@ public class Contact {
 	
 	/**
 	 * Default Constructor
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(1)
 	 * @param N/A
 	 * @return N/A
 	 */
@@ -38,6 +40,8 @@ public class Contact {
 	
 	/**
 	 * Constructor
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
 	 * @param string ID, string First, string Last, string Phone, string Address
 	 * @return N/A
 	 */
@@ -52,6 +56,9 @@ public class Contact {
 	
 	// Get and set ID
 	/**
+	 * Gets the ID associated with an object
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
 	 * @param N/A
 	 * @return string ID
 	 */
@@ -60,6 +67,9 @@ public class Contact {
 	}
 
 	/**
+	 * Sets an ID in object creation given its size is < 10.
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
 	 * @param string New ID
 	 * @return N/A
 	 */
@@ -74,15 +84,25 @@ public class Contact {
 	
 	// Get and set firstName
 	/**
+	 * Gets the first name associated with an object as string.
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
 	 * @param N/A
 	 * @return string First Name
 	 */
 	public String getfirstName() {
 		return firstName;
 	}
-
+	
+	/**
+	 * Sets an objects associated first name as string if size < 10.
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
+	 * @param N/A
+	 * @return string Last Name
+	 */
 	public void setFirstName(String newFirstName) {
-		int maxLength = 10; // Upper bound from design doc
+		int maxLength = 10; // Upper bound from design doc, names can be longer than this
 		if(newFirstName == null || newFirstName.length() > maxLength) {
 			throw new IllegalArgumentException("Invalid First Name");
 		}
@@ -91,6 +111,9 @@ public class Contact {
 	
 	// Get and set lastName
 	/**
+	 * Gets an objects associated last name as string.
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
 	 * @param N/A
 	 * @return string Last Name
 	 */
@@ -99,11 +122,14 @@ public class Contact {
 	}
 	
 	/**
+	 * Sets an objects last name from string given size < 10.
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
 	 * @param string New Last Name
 	 * @return N/A
 	 */
 	public void setLastName(String newLastName) {
-		int maxLength = 10; // Upper bound from design doc
+		int maxLength = 10; // Upper bound from design doc, yes names can be significantly longer than this.
 		if(newLastName == null || newLastName.length() > 10) {
 			throw new IllegalArgumentException("Invalid Last Name");
 		}
@@ -112,6 +138,7 @@ public class Contact {
 	
 	// Get and set phone
 	/**
+	 * Gets an objects associated phone number as string.
 	 * @param N/A
 	 * @return string phone
 	 */
@@ -120,6 +147,9 @@ public class Contact {
 	}
 
 	/**
+	 * Sets an objects phone number from string given its length is 10.
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
 	 * @param string New Phone
 	 * @return N/A
 	 */
@@ -133,6 +163,9 @@ public class Contact {
 	
 	// Get and set address
 	/**
+	 * Gets an objects associated address as string.
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
 	 * @param N/A
 	 * @return string address
 	 */
@@ -141,6 +174,9 @@ public class Contact {
 	}
 
 	/**
+	 * Sets an address to string input given 6 < size < 30.
+	 * Time: O(), θ(), Ω()
+	 * Space: O()
 	 * @param string New Address
 	 * @return N/A
 	 */
