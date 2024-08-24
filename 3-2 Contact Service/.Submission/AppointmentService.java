@@ -2,7 +2,7 @@
 // By:                   //
 // Connor Sculthorpe    //
 // 30 June 2024        //
-// TO: 03 August 2024 //
+// TO: 24 August 2024 //
 ///////////////////////
 
 package main;
@@ -21,6 +21,8 @@ public class AppointmentService {
 
 	/**
 	 * Checks for a unique Appointment ID and reserves that ID if it is unused
+	 * Time: O(n), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID, LocalDate Date, str Description
 	 * @return N/A
 	 */
@@ -39,6 +41,8 @@ public class AppointmentService {
 	
 	/**
 	 * Deletes a Task at specified address
+	 * Time: O(n), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID
 	 * @return N/A
 	 */
@@ -54,10 +58,12 @@ public class AppointmentService {
 	
 	/**
 	 * Fetches an Appointment by ID
+	 * Time: O(n), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID
-	 * @return Task object
+	 * @return Task object, null if noexist
 	 */
-	public Appointment lookupAppointment(String ID) {
+	public Appointment lookupAppointment(String ID) { // FIXME: String noexist not handled (tempAppointment = null)
 		Appointment tempAppointment = new Appointment();
 		tempAppointment = Appointments.get(ID);
 		return tempAppointment;
