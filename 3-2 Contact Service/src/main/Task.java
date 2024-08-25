@@ -2,7 +2,7 @@
 // By:                   //
 // Connor Sculthorpe    //
 // 22 June 2024        //
-// TO: 28 June 2024   //
+// TO: 25 Aug 2024    //
 ///////////////////////
 
 package main;
@@ -19,6 +19,8 @@ public class Task {
 	
 	/**
 	 * Default Constructor
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(1)
 	 * @param N/A
 	 * @return N/A
 	 */
@@ -30,6 +32,8 @@ public class Task {
 	
 	/**
 	 * Constructor
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param string ID, string Name, string Description
 	 * @return N/A
 	 */
@@ -41,7 +45,9 @@ public class Task {
 	
 	// Get and set ID
 	/**
-	 * This function is not called outside of object creation.
+	 * Unused, but can be used to verify a task ID.
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(1)
 	 * @param N/A
 	 * @return string ID
 	 */
@@ -50,6 +56,9 @@ public class Task {
 	}
 
 	/**
+	 * Called only in the default constructor to set the ID of our object.
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param string New ID
 	 * @return N/A
 	 */
@@ -64,6 +73,9 @@ public class Task {
 	
 	// Get and set name
 	/**
+	 * Gets the name associated with an object
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(1)
 	 * @param N/A
 	 * @return string Name
 	 */
@@ -71,6 +83,13 @@ public class Task {
 		return name;
 	}
 
+	/**
+	 * Sets the name associated with an object to String given its length < 20
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
+	 * @param N/A
+	 * @return string Name
+	 */
 	public void setName(String newName) {
 		int maxLength = 20; // Upper bound from design doc
 		if(newName == null || newName.length() > maxLength) {
@@ -81,6 +100,9 @@ public class Task {
 	
 	// Get and set description
 	/**
+	 * Gets the description associated with an object
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(1)
 	 * @param N/A
 	 * @return string description
 	 */
@@ -89,6 +111,9 @@ public class Task {
 	}
 
 	/**
+	 * Sets the description associated with an object to String given its length < 50
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param string New description
 	 * @return N/A
 	 */

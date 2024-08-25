@@ -2,7 +2,7 @@
 // By:                   //
 // Connor Sculthorpe    //
 // 26 June 2024        //
-// TO: 28 June 2024   //
+// TO: 25 Aug 2024    //
 ///////////////////////
 
 package main;
@@ -21,6 +21,8 @@ public class TaskService {
 
 	/**
 	 * Checks for a unique Task ID and reserves that ID if it is unused
+	 * Time: O(n), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID, str Name, str Description
 	 * @return N/A
 	 */
@@ -39,6 +41,8 @@ public class TaskService {
 	
 	/**
 	 * Deletes a Task at specified address
+	 * Time: O(n), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID
 	 * @return N/A
 	 */
@@ -53,7 +57,9 @@ public class TaskService {
 	}
 	
 	/**
-	 * Fetches a task by ID
+	 * Fetches a task by ID.
+	 * Time: O(n), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID
 	 * @return Task object
 	 */
@@ -65,6 +71,8 @@ public class TaskService {
 	
 	/**
 	 * Updates a task's name.
+	 * Time: O(n), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID, str Name
 	 * @return N/A
 	 */
@@ -82,6 +90,8 @@ public class TaskService {
 	
 	/**
 	 * Updates a task's description.
+	 * Time: O(n), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID, str Description
 	 * @return N/A
 	 */
