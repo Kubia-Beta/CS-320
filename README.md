@@ -12,6 +12,6 @@ I can ensure that user needs are incorporated by actively incorporating user fee
 ## How do I approach designing software?
 My process for designing software starts with conceptualization, or the core problems that the software could address, and follows the V Model (Hambling et al., 2019). Naturally, that means we will progress through requirement specification, functional specification, technical specification, to program specification, finally to begin coding, all the while planning our testing phase. What comes after is then unit testing, integration testing, system testing, and ends with acceptance testing. This means that I do not like designing code first, and I only wish to proceed when the documentation has already been produced, analyzed, and tested, at which point you naturally begin designing the program in UML and planning unit tests to then move onto creating the program in code.
 
-### References
+<p align="center"><Code>References</Code></p>
 Morgan, P., Samaroo, A., Thompson, G., & Williams, P. (2019). Software testing: An ISTQB-BCS Certified Tester Foundation Guide (B. Hambling, Ed.; 4th ed.). BCS Learning and Development Ltd.
 
