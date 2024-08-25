@@ -2,7 +2,8 @@
 // By:                   //
 // Connor Sculthorpe    //
 // 22 June 2024        //
-////////////////////////
+// TO: 25 Aug 2024    //
+///////////////////////
 
 package main;
 
@@ -23,6 +24,8 @@ public class ContactService {
 
 	/**
 	 * Checks for a unique ID and reserves that ID if it is unused
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID, str First, str Last, str Phone, str Address
 	 * @return N/A
 	 */
@@ -42,6 +45,8 @@ public class ContactService {
 	
 	/**
 	 * Deletes a contact at specified address
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID
 	 * @return N/A
 	 */
@@ -57,6 +62,8 @@ public class ContactService {
 	
 	/**
 	 * Fetches a contact by ID
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID
 	 * @return Contact object
 	 */
@@ -67,7 +74,9 @@ public class ContactService {
 	}
 	
 	/**
-	 * Updates a contact based on input ID
+	 * DEPRECATED: Updates a contact based on input ID
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
 	 * @param str ID, int Type, str updateValue. Type ID: [1] First, [2] Last, [3] Phone, [4] Address 
 	 * @return N/A
 	 */
@@ -77,11 +86,6 @@ public class ContactService {
 		if (tempContact == null) { // If no data was assigned
 			throw new IllegalArgumentException("Invalid ID; This ID does not exist.");
 		}
-		//Scanner in = new Scanner(System.in);
-		//System.out.println("Select field to update:" + "\r\n" + "[1] First Name"  + "\r\n" +
-		//		 "\r\n" + "[2] Last Name" + "\r\n" + "[3] Phone Number" + "\r\n" + "[4] Address");
-		//String userMsg = in.nextLine(); // Basic user input until a UI is present, todo: switch on input toupdateContact(int anint, str id)
-		//int choice = Integer.valueOf(userMsg);
 		// switch for choosing field to update
 		switch(fieldType) {
 		// case 1: update First
@@ -109,4 +113,71 @@ public class ContactService {
 		}
 	}
 	
+	/**
+	 * Updates an address associated with a contact object based on input ID
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
+	 * @param str ID, str updatedAddress.
+	 * @return N/A
+	 */
+	public void updateAddress(String ID, String updatedAddress){
+		Contact tempContact = new Contact(); // Holds the searched contact's values
+		tempContact = Contacts.get(ID); // Assign the data
+		if (tempContact == null) { // If no data was assigned
+			throw new IllegalArgumentException("Invalid ID; This ID does not exist.");
+		}
+		tempContact.setAddress(updatedField);
+		Contacts.put(ID, tempContact);
+	}
+	
+	/**
+	 * Updates a first name associated with a contact object based on input ID
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
+	 * @param str ID, str updatedAddress.
+	 * @return N/A
+	 */
+	public void updateFirstName(String ID, String updatedFirstName){
+		Contact tempContact = new Contact(); // Holds the searched contact's values
+		tempContact = Contacts.get(ID); // Assign the data
+		if (tempContact == null) { // If no data was assigned
+			throw new IllegalArgumentException("Invalid ID; This ID does not exist.");
+		}
+		tempContact.setFirstName(updatedFirstName);
+		Contacts.put(ID, tempContact);
+	}
+	
+	/**
+	 * Updates a last name associated with a contact object based on input ID
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
+	 * @param str ID, str updatedAddress.
+	 * @return N/A
+	 */
+	public void updateLastName(String ID, String updatedLastName){
+		Contact tempContact = new Contact(); // Holds the searched contact's values
+		tempContact = Contacts.get(ID); // Assign the data
+		if (tempContact == null) { // If no data was assigned
+			throw new IllegalArgumentException("Invalid ID; This ID does not exist.");
+		}
+		tempContact.setLastName(updatedLastName);
+		Contacts.put(ID, tempContact);
+	}
+	
+	/**
+	 * Updates an address associated with a contact object based on input ID
+	 * Time: O(1), θ(1), Ω(1)
+	 * Space: O(n)
+	 * @param str ID, str updatedAddress.
+	 * @return N/A
+	 */
+	public void updatePhoneNumber(String ID, String updatedPhoneNumber){
+		Contact tempContact = new Contact(); // Holds the searched contact's values
+		tempContact = Contacts.get(ID); // Assign the data
+		if (tempContact == null) { // If no data was assigned
+			throw new IllegalArgumentException("Invalid ID; This ID does not exist.");
+		}
+		tempContact.setPhoneNumber(updatedPhoneNumber);
+		Contacts.put(ID, tempContact);
+	}	
 }
