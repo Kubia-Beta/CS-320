@@ -3,7 +3,7 @@ This contains the code for a mobile app that is requested by a mock customer.
 
 These files are meant to demonstrate the importance of full test coverage, and the deliberate avoidance of magic numbers in published code, along with clear and concise comments in readable code. It is designed to be high quality, as to keep its maintainability high.
 
-The final version of the project is located [here](3-2%20Contact%20Service/src) in the .src path for Main and Test. In Main resides the functioning code, in Test resides the respective tests to demonstrate both code coverage as well as functionality.
+The final version of the project is located [here](3-2%20Contact%20Service/src) in the .src path for Main and Test. In Main resides the functioning code, in Test resides the respective tests to demonstrate both code coverage as well as functionality. The reflection on the work is documented [here](/Summary%20and%20Reflections.docx) as docx, and contains at-length discussions of code and methods. For a plaintext version, click [here](/Summary%20and%20Reflections.txt).
 
 ## How can I ensure that my code, program, or software is functional and secure?
 Ensuring that software is functional and secure is no small feat and has many moving parts in its success. Code requires its requisite tests, from white box tests which verify coverage to black box tests which verify functionality. Security is itself a problem to be considered in the early phases of design, and requires the designers to use caution, to be deliberate and considerate with their choices. By following existing secure design patterns, parts of development that otherwise become exposed later can be secured early, guaranteeing a lower overhead to the program’s development.
